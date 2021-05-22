@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake Records Detection System for Corona Battle</title>
+  <link href='https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body background="pic.jpg">
+
+<header class="header">
+        <!-- mid for navigation -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="#" >Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Amplified Details</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <!-- right for buttons -->
+        <div class="right">
+            <button class="btn">Call Us Now</button>
+            <button class="btn">Email Us</button>
+        </div>
+</header>
+
+ <div class="login">
+	<h1>Fake Records📰  Detector: Amplify for Good</h1>
+
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+        	<div class="results">
+
+	{% if prediction == ['FAKE']%}
+	<h2 style="color:red;">Spam Alert⚠ </h2>
+	{% elif prediction == ['REAL']%}
+				<h2 style="color:green;"><b>Real News📰</b></h2>
+	{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
